@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollapseHeader CollapseHeader should render 1`] = `
+<View
+  style={
+    Object {
+      "alignContent": "center",
+      "flexDirection": "row",
+      "marginLeft": 20,
+      "marginTop": 20,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#b3d4fc",
+        "flexDirection": "column",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000",
+          "fontSize": 18,
+          "fontWeight": "bold",
+          "marginLeft": 5,
+          "width": 300,
+        }
+      }
+    />
+  </View>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    nativeID="animatedComponent"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": undefined,
+        "opacity": 1,
+        "paddingRight": 5,
+      }
+    }
+  >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": "gray",
+            "fontSize": 25,
+          },
+          undefined,
+          Object {
+            "fontFamily": "Ionicons",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+</View>
+`;
