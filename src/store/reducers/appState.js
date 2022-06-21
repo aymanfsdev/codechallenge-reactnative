@@ -4,6 +4,7 @@ import {
   DONE_FETCHING_DATA,
   UPDATED_CANCER_TYPES,
   UPDATED_CANCER_DETAILS,
+  UPDATED_COPING_CANCER,
 } from '../actions/appState';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   carouselDone: false,
   cancerTypes: [],
   cancerDetails: {},
+  copingCancer: [],
 };
 
 const appStateReducer = (state = initialState, action) => {
@@ -27,7 +29,8 @@ const appStateReducer = (state = initialState, action) => {
       return {...state, cancerTypes: action.payload};
     case UPDATED_CANCER_DETAILS:
       return {...state, cancerDetails: action.payload};
-
+    case UPDATED_COPING_CANCER:
+      return {...state, copingCancer: action.payload};
     default:
       return state;
   }

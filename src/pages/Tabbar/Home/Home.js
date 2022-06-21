@@ -18,6 +18,7 @@ import {
 } from '../../../store/actions/appState';
 
 import Card from '../../../components/Card';
+import Colors from '../../../Colors';
 
 /**
  * @author Stanley George
@@ -27,16 +28,17 @@ import Card from '../../../components/Card';
 const Home = props => {
   const dispatch = useDispatch();
   const appState = useSelector(state => state.appStateSlice);
-
+  // console.log(appState);
   const {container} = styles;
 
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        await dispatch(getCancerTypes());
-      } catch {}
-    };
-    loadData();
+    // const loadData = async () => {
+    //   try {
+    //     await dispatch(getCancerTypes());
+    //   } catch {}
+    // };
+    // loadData();
+    dispatch(getCancerTypes());
   }, [dispatch]);
 
   if (appState.isLoading) {
@@ -121,6 +123,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 20,
+    color: Colors.black,
   },
   card: {
     margin: 15,
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
   },
   center: {justifyContent: 'center'},
   cardTitle: {width: 200, padding: 10},
-  cardTitleText: {fontSize: 18, fontWeight: 'bold'},
+  cardTitleText: {fontSize: 18, fontWeight: 'bold', color: Colors.black},
 });
 
 export default Home;

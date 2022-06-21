@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
+import Colors from '../Colors';
 
 /**
  * @author Stanley George
@@ -20,7 +21,7 @@ const CollapseDetails = ({items, collapsed, onPress}) => {
         {items.map(treatmentItem => {
           return (
             <View key={Math.random().toString(36)} style={styles.containerView}>
-              <Text>{treatmentItem.title}</Text>
+              <Text style={styles.text}>{treatmentItem.title}</Text>
               <TouchableOpacity
                 style={styles.webLinkContainer}
                 onPress={() => {
@@ -45,6 +46,9 @@ const styles = StyleSheet.create({
   containerView: {marginTop: 5, marginLeft: 20},
   webLinkContainer: {marginBottom: 5, marginTop: 2},
   webLink: {color: 'blue'},
+  text: {
+    color: Colors.black,
+  },
 });
 
 export default CollapseDetails;

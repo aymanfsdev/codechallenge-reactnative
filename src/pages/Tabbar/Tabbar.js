@@ -71,6 +71,13 @@ function MoreScreen() {
         component={More}
         options={{title: 'More'}}
       />
+      <MoreStack.Screen
+        name="WebDetails"
+        component={WebDetails}
+        options={({route}) => ({
+          title: route.params.title,
+        })}
+      />
     </MoreStack.Navigator>
   );
 }
@@ -79,22 +86,25 @@ function MoreScreen() {
  * @function Tabbar
  **/
 const Tabbar = props => {
+  const getColorByRouteName = route => {
+    if (route === 'Home') {
+      return 'home-outline';
+    } else if (route === 'More') {
+      return 'reorder-four-outline';
+    }
+  };
   return (
     <>
       <Tab.Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = 'home-outline';
-            }
-
-            if (route.name === 'More') {
-              iconName = 'reorder-four-outline';
-            }
-
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <Ionicons
+                name={getColorByRouteName(route.name)}
+                size={size}
+                color={color}
+              />
+            );
           },
         })}
         tabBarOptions={{

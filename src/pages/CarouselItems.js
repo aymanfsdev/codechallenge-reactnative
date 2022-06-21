@@ -37,7 +37,7 @@ const ENTRIES1 = [
 
 const CarouselItems = props => {
   const slider1Ref = React.useRef(null);
-  const [slider1ActiveSlide, setSlider1ActiveSlide] = useState(1);
+  const [slider1ActiveSlide, setSlider1ActiveSlide] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -74,15 +74,15 @@ const CarouselItems = props => {
         // autoplay={true}
         // autoplayDelay={500}
         // autoplayInterval={3000}
-        // onSnapToItem={index => setSlider1ActiveSlide(index)}
+        onSnapToItem={index => setSlider1ActiveSlide(index)}
       />
       <Pagination
         dotsLength={ENTRIES1.length}
         activeDotIndex={slider1ActiveSlide}
         containerStyle={styles.paginationContainer}
-        dotColor={'rgba(255, 255, 255, 0.92)'}
+        dotColor={Colors.white}
         dotStyle={styles.paginationDot}
-        inactiveDotColor={'black'}
+        inactiveDotColor={Colors.black}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
         carouselRef={slider1Ref}

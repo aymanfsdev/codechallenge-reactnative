@@ -12,6 +12,7 @@ import {useSelector} from 'react-redux';
 
 import CollapseHeader from '../../../components/CollapseHeader';
 import CollapseDetails from '../../../components/CollapseDetails';
+import Colors from '../../../Colors';
 
 function upperCaseEachWord(str) {
   return str.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
@@ -23,6 +24,7 @@ function upperCaseEachWord(str) {
  **/
 const CancerDetails = props => {
   const appState = useSelector(state => state.appStateSlice);
+  console.log(appState);
   const [details, setDetails] = useState({name: 'Test detail'});
   const [treatments, setTreatments] = useState([]);
   const [treatmentCollapsed, setTreatmentCollapsed] = useState(false);
@@ -41,42 +43,39 @@ const CancerDetails = props => {
     const causesPreventionsFromDetails =
       appState.cancerDetails?.['causes & preventions'];
     const screeningsFromDetails = appState.cancerDetails?.screening;
-
     const treatmentList = [];
     if (treatmentsFromDetails) {
-      for (treatmentItem of treatmentsFromDetails) {
+      treatmentsFromDetails.map((treatmentItem, _) => {
         let title = treatmentItem?.title ?? 'No Title';
         let url = treatmentItem?.url ?? '';
-
         if (title.length !== 0 && url.length !== 0) {
           treatmentList.push({
             title: upperCaseEachWord(title.trim()),
             url: url,
           });
         }
-      }
+      });
     }
     setTreatments(treatmentList);
 
     const causesPreventionsList = [];
     if (causesPreventionsFromDetails) {
-      for (causesPreventionItem of causesPreventionsFromDetails) {
+      causesPreventionsFromDetails.map((causesPreventionItem, _) => {
         let title = causesPreventionItem?.title ?? 'No Title';
         let url = causesPreventionItem?.url ?? '';
-
         if (title.length !== 0 && url.length !== 0) {
           causesPreventionsList.push({
             title: upperCaseEachWord(title.trim()),
             url: url,
           });
         }
-      }
+      });
     }
     setCausesPreventions(causesPreventionsList);
 
     const screeningsList = [];
     if (screeningsFromDetails) {
-      for (screeningItem of screeningsFromDetails) {
+      screeningsFromDetails.map((screeningItem, _) => {
         let title = screeningItem?.title ?? 'No Title';
         let url = screeningItem?.url ?? '';
 
@@ -86,7 +85,7 @@ const CancerDetails = props => {
             url: url,
           });
         }
-      }
+      });
     }
     setScreenings(screeningsList);
   }, [appState.cancerDetails]);
@@ -131,7 +130,7 @@ const CancerDetails = props => {
             <Text style={styles.headerContainer}>Overview</Text>
           </View>
           <View style={styles.overViewContainer}>
-            <Text>{details.overview}</Text>
+            <Text style={styles.text}>{details.overview}</Text>
             <TouchableOpacity
               style={styles.webLinkContainer}
               onPress={() => {
@@ -196,6 +195,7 @@ const CancerDetails = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 10,
   },
   webLinkContainer: {marginTop: 10},
   webLinkText: {color: 'blue'},
@@ -208,14 +208,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     width: 335,
-    backgroundColor: '#b3d4fc',
+    backgroundColor: Colors.ltBlue,
   },
   headerContainer: {
     marginLeft: 5,
     width: 300,
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'black',
+    color: Colors.black,
   },
   overViewContainer: {
     marginLeft: 20,
@@ -223,7 +223,10 @@ const styles = StyleSheet.create({
     width: 330,
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'black',
+    color: Colors.black,
+  },
+  text: {
+    color: Colors.black,
   },
 });
 
